@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2013 at 09:15 AM
+-- Generation Time: Mar 25, 2013 at 09:30 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -131,6 +131,22 @@ CREATE TABLE IF NOT EXISTS `buku_tamu` (
 
 INSERT INTO `buku_tamu` (`id_buku_tamu`, `tanggal`, `isi`, `id_pengunjung`) VALUES
 (1, '2013-03-25', 'Ini isi buku tamu', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `file`
+--
+
+CREATE TABLE IF NOT EXISTS `file` (
+  `id_file` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_file` varchar(32) NOT NULL,
+  `deskripsi_file` text NOT NULL,
+  `url` varchar(200) NOT NULL,
+  `tanggal` date NOT NULL,
+  `id_admin` int(11) NOT NULL,
+  PRIMARY KEY (`id_file`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
