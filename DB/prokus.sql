@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2013 at 02:58 AM
+-- Generation Time: Mar 25, 2013 at 09:15 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `prokus`
 --
+CREATE DATABASE `prokus` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `prokus`;
 
 -- --------------------------------------------------------
 
@@ -63,6 +65,27 @@ CREATE TABLE IF NOT EXISTS `agenda` (
 
 INSERT INTO `agenda` (`id_agenda`, `nama_agenda`, `tanggal`, `keterangan`, `id_admin`) VALUES
 (1, 'Sosialisasi', '2013-04-06', 'Sosialisasi TDA', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `album`
+--
+
+CREATE TABLE IF NOT EXISTS `album` (
+  `id_album` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_album` varchar(32) NOT NULL,
+  `deskripsi_album` text NOT NULL,
+  `id_admin` int(11) NOT NULL,
+  PRIMARY KEY (`id_album`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `album`
+--
+
+INSERT INTO `album` (`id_album`, `nama_album`, `deskripsi_album`, `id_admin`) VALUES
+(1, 'katalog', 'Katalog Ngunduh Mantu', 1);
 
 -- --------------------------------------------------------
 
@@ -119,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `foto` (
   `id_foto` int(11) NOT NULL AUTO_INCREMENT,
   `nama_foto` varchar(32) NOT NULL,
   `url` varchar(200) NOT NULL,
-  `id_galeri` int(11) NOT NULL,
+  `id_album` int(11) NOT NULL,
   PRIMARY KEY (`id_foto`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -127,29 +150,8 @@ CREATE TABLE IF NOT EXISTS `foto` (
 -- Dumping data for table `foto`
 --
 
-INSERT INTO `foto` (`id_foto`, `nama_foto`, `url`, `id_galeri`) VALUES
+INSERT INTO `foto` (`id_foto`, `nama_foto`, `url`, `id_album`) VALUES
 (1, 'Produk 1', 'URL', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `galeri`
---
-
-CREATE TABLE IF NOT EXISTS `galeri` (
-  `id_galeri` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_galeri` varchar(32) NOT NULL,
-  `deskripsi_galeri` text NOT NULL,
-  `id_admin` int(11) NOT NULL,
-  PRIMARY KEY (`id_galeri`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `galeri`
---
-
-INSERT INTO `galeri` (`id_galeri`, `nama_galeri`, `deskripsi_galeri`, `id_admin`) VALUES
-(1, 'katalog', 'Katalog Ngunduh Mantu', 1);
 
 -- --------------------------------------------------------
 
@@ -194,6 +196,46 @@ CREATE TABLE IF NOT EXISTS `pengunjung` (
 
 INSERT INTO `pengunjung` (`id_pengunjung`, `IP`, `nama`, `email`, `website`) VALUES
 (1, '127.0.0.1', 'Ali', 'ali@baba.com', 'baba.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pertanyaan`
+--
+
+CREATE TABLE IF NOT EXISTS `pertanyaan` (
+  `id_pertanyaan` int(11) NOT NULL AUTO_INCREMENT,
+  `pertanyaan` text NOT NULL,
+  `status` int(1) NOT NULL,
+  PRIMARY KEY (`id_pertanyaan`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pilihan`
+--
+
+CREATE TABLE IF NOT EXISTS `pilihan` (
+  `id_pilihan` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_pilihan` varchar(32) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `id_pertanyaan` int(11) NOT NULL,
+  PRIMARY KEY (`id_pilihan`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `statistik`
+--
+
+CREATE TABLE IF NOT EXISTS `statistik` (
+  `IP` varchar(32) NOT NULL,
+  `tanggal` date NOT NULL,
+  `hits` int(11) NOT NULL,
+  `online` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
