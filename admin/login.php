@@ -58,13 +58,12 @@
         <div class="container">
 
             <form class="form-signin">
-                <h2 class="form-signin-heading text-center">Login</h2>
+                <div class="row-fluid">
+                <img src="../assets/img/jack & revo.jpg" style="margin-bottom: 10px;" />
                 <input type="text" class="input-block-level" placeholder="Username">
                 <input type="password" class="input-block-level" placeholder="Password">
-                <label class="checkbox">
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-                <button class="btn btn-large btn-block" type="submit">Login</button>
+                <button class="btn btn-large pull-right" type="submit">Login</button>
+                </div>
             </form>
 
         </div> <!-- /container -->
