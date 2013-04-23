@@ -79,6 +79,9 @@
                 border-right: 0;
                 border-radius: 0 3px 3px 0;
             }
+            .logo {
+                margin-bottom: 10px;
+            }
         </style>
         <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -96,7 +99,8 @@
         <div class="container">
 
             <div class="masthead">
-                <h3 class="muted">Jack & Revo</h3>
+                <!--<h3 class="muted">Jack & Revo</h3>-->
+                <img class="logo" src="assets/img/jack & revo.jpg" width="200px" />
                 <div class="navbar">
                     <div class="navbar-inner">
                         <div class="container">
@@ -114,11 +118,29 @@
             </div>
 
             <!-- Jumbotron -->
-            <div class="jumbotron">
+            <!--<div class="jumbotron">
                 <h1>Marketing stuff!</h1>
                 <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
                 <a class="btn btn-large btn-success" href="#">Get started today</a>
-            </div>
+            </div>-->
+            
+            <div id="myCarousel" class="carousel slide">
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+                  <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                  <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="item">
+                      <img src="assets/img/under construction.jpg" alt="">
+                  </div>
+                  <div class="item">
+                      <img src="assets/img/j&r.jpg" alt="">
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+              </div>
 
             <hr>
 
