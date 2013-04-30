@@ -1,4 +1,5 @@
-<?php ob_start();?>
+<?php ob_start(); ?>
+<?php require_once '../config/config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -30,17 +31,20 @@
                 <div class="span9">
                     <h3 style="margin-top: 0px;">Dashboard</h3>
                     <ul class="breadcrumb">
-                        <li><a href="#">Home</a> <span class="divider">/</span></li>
-                        <li><a href="#">Library</a> <span class="divider">/</span></li>
-                        <li class="active">Data</li>
+                        <li><a href="<?php echo $base_url . 'admin/index.php?page=dashboard'; ?>">Home</a> <span class="divider">/</span></li>
+                        <li><a href="<?php echo $base_url . 'admin/index.php?page=' . $_GET['page']; ?>"><?php echo ucwords($_GET['page']); ?></a></li>
                     </ul>
                     <div class="content well">
                         <?php
-                        $page = $_GET['page'] . ".php";
-                        if (file_exists($page)) {
-                            require_once $page;
+                        if (isset($_GET['page'])) {
+                            $page = $_GET['page'] . ".php";
+                            if (file_exists($page)) {
+                                require_once $page;
+                            } else {
+                                header('location:404.php');
+                            }
                         } else {
-                            header('location:404.php');
+                            header('location:index.php?page=dashboard');
                         }
                         /* if (!empty($_GET['page'])) {
                           $page = $_GET['page'] . ".php";

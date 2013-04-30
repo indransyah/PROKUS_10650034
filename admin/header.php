@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="#">Jack & Revo</a>
+            <a class="brand" href="<?php echo $base_url . 'admin/index.php?page=dashboard'; ?>">Jack & Revo</a>
             <div class="nav-collapse collapse navbar-responsive-collapse">
                 <ul class="nav pull-right">
                     <li class="divider-vertical"></li>

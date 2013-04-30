@@ -1,3 +1,19 @@
+<?php
+if (isset($_GET['hal'])) {
+    $halaman = $_GET['hal'];
+} else {
+    $halaman = 1;
+}
+$jumlahDataPerHalaman = 5;
+$sql = "SELECT * FROM admin";
+$run = mysql_query($sql);
+$jumlahData = mysql_num_rows($run);
+$sql = "";
+$jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+$dataMulai = ($halaman * $jumlahDataPerHalaman) - $jumlahDataPerHalaman;
+$sql = "SELECT * FROM admin LIMIT $dataMulai, $jumlahDataPerHalaman";
+$result = mysql_query($sql) or die(mysql_error());
+?>
 <legend>View Users</legend>
 <table class="table table-striped">
     <thead>
@@ -10,31 +26,32 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td><i class="icon-pencil"></i> <i class="icon-remove"></i></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td><i class="icon-pencil"></i> <i class="icon-remove"></i></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td><i class="icon-pencil"></i> <i class="icon-remove"></i></td>
-        </tr>
+        <?php
+        while ($rows = mysql_fetch_array($result)) :
+            ?>
+            <tr>
+                <td>1</td>
+                <td><?php echo $rows['username']; ?></td>
+                <td><?php echo $rows['nama']; ?></td>
+                <td><?php echo $rows['email']; ?></td>
+                <td><a href="<?php echo $base_url . 'admin/process/edit-user.php?id=' . $rows['id_admin']; ?>"><i class="icon-pencil"></i></a> <a href="<?php echo $base_url . 'admin/process/delete-user.php?id=' . $rows['id_admin']; ?>"><i class="icon-remove"></i></a></td>
+            </tr>
+            <?php
+        endwhile;
+        ?>
     </tbody>
 </table>
 
-<div class="pagination">
+<ul class="pager">
+    <li class="previous">
+        <a href="#">&larr; Previous</a>
+    </li>
+    <li class="next">
+        <a href="#">Next &rarr;</a>
+    </li>
+</ul>
+
+<!--<div class="pagination">
     <ul>
         <li class="disabled"><a href="#">«</a></li>
         <li class="active"><a href="#">1</a></li>
@@ -44,4 +61,4 @@
         <li><a href="#">5</a></li>
         <li><a href="#">»</a></li>
     </ul>
-</div>
+</div>-->
