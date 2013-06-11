@@ -50,19 +50,19 @@
         <![endif]-->
 
         <!-- Fav and touch icons -->
-        <link rel="shortcut icon" href="../assets/ico/favicon.png">
+        <!--<link rel="shortcut icon" href="../assets/ico/favicon.png">-->
     </head>
 
     <body>
 
         <div class="container">
 
-            <form class="form-signin">
+            <form class="form-signin" method="post" action="process/login.php">
                 <div class="row-fluid">
-                <img src="../assets/img/jack & revo.jpg" style="margin-bottom: 10px;" />
-                <input type="text" class="input-block-level" placeholder="Username">
-                <input type="password" class="input-block-level" placeholder="Password">
-                <button class="btn btn-large pull-right" type="submit">Login</button>
+                    <img src="../assets/img/jack & revo.jpg" style="margin-bottom: 10px;" />
+                    <input name="username" type="text" class="input-block-level" placeholder="Username">
+                    <input name="password" type="password" class="input-block-level" placeholder="Password">
+                    <button class="btn btn-large pull-right" type="submit">Login</button>
                 </div>
             </form>
 

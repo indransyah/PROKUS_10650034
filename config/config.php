@@ -1,7 +1,5 @@
 <?php
-$base_url = "http://localhost/prokus_10650034/";
 
-//Database
 $host = "localhost";
 $username = "root";
 $password = "";

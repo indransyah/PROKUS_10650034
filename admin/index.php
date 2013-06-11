@@ -1,5 +1,11 @@
-<?php ob_start(); ?>
-<?php require_once '../config/config.php'; ?>
+<?php
+ob_start();
+session_start();
+require_once '../config/config.php';
+if (!$_SESSION['username'] AND !$_SESSION['id_admin']) {
+    header("location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,7 +19,7 @@
         <link href="../assets/css/bootstrap-cerulean.css" rel="stylesheet">
         <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
         <link href="../assets/css/style.css" rel="stylesheet">
-
+        <script type="text/javascript" src="../assets/js/jquery.js"></script>
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="../assets/js/html5shiv.js"></script>
@@ -31,8 +37,8 @@
                 <div class="span9">
                     <h3 style="margin-top: 0px;">Dashboard</h3>
                     <ul class="breadcrumb">
-                        <li><a href="<?php echo $base_url . 'admin/index.php?page=dashboard'; ?>">Home</a> <span class="divider">/</span></li>
-                        <li><a href="<?php echo $base_url . 'admin/index.php?page=' . $_GET['page']; ?>"><?php echo ucwords($_GET['page']); ?></a></li>
+                        <li><a href="<?php echo 'index.php?page=welcome'; ?>">Home</a> <span class="divider">/</span></li>
+                        <li><a href="<?php echo 'index.php?page=' . $_GET['page']; ?>"><?php echo ucwords($_GET['page']); ?></a></li>
                     </ul>
                     <div class="content well">
                         <?php
@@ -44,14 +50,8 @@
                                 header('location:404.php');
                             }
                         } else {
-                            header('location:index.php?page=dashboard');
+                            header('location:index.php?page=welcome');
                         }
-                        /* if (!empty($_GET['page'])) {
-                          $page = $_GET['page'] . ".php";
-                          require_once $page;
-                          } else {
-                          header('location:404.php');
-                          } */
                         ?>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
         <!-- Le javascript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="../assets/js/jquery.js"></script>
+        <!--<script src="../assets/js/jquery.js"></script>-->
         <script src="../assets/js/bootstrap-transition.js"></script>
         <script src="../assets/js/bootstrap-alert.js"></script>
         <script src="../assets/js/bootstrap-modal.js"></script>
@@ -75,7 +75,6 @@
         <script src="../assets/js/bootstrap-collapse.js"></script>
         <script src="../assets/js/bootstrap-carousel.js"></script>
         <script src="../assets/js/bootstrap-typeahead.js"></script>
-
     </body>
 </html>
 <?php ob_flush(); ?>
